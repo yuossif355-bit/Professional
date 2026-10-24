@@ -5,28 +5,29 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>بروفيشنال أكاديمي | كرة يد · سلة · طائرة</title>
 <meta name="description" content="أكاديمية بروفيشنال الإسماعيلية: كرة يد، كرة سلة، وكرة طائرة للشباب والبنات. احجز مكانك الآن.">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="theme-color" content="#0a0f1a">
 <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
 <link rel="apple-touch-icon" href="img/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0b0b;--panel:#161616;--panel-2:#1e1e1e;--line:#2c2c2c;--text:#f5f2ee;--muted:#a7a29b;--or:#ff7a00;--or-2:#ffb066}
+:root{--bg:#0a0f1a;--panel:#111827;--panel-2:#172033;--line:#263248;--text:#f3f6fb;--muted:#9aa7bd;--or:#ff8a1f;--or-2:#ffc27a;--red:#ef4444;--blue:#38bdf8;--grad:linear-gradient(90deg,#ef4444,#ff8a1f,#38bdf8)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:"Cairo",system-ui,sans-serif;line-height:1.7;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
 button,input,select{font:inherit;color:inherit}
 button,label{cursor:pointer}
 :focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .wrap{max-width:720px;margin:0 auto;padding-inline:16px}
-.hero{text-align:center;padding:26px 16px 22px;background:radial-gradient(ellipse at 50% 0%,rgba(255,122,0,.28),transparent 65%);border-bottom:3px solid var(--or)}
-.hero img{width:min(240px,64vw);height:auto;border-radius:50%;box-shadow:0 0 44px rgba(255,122,0,.45)}
+.hero{text-align:center;padding:26px 16px 22px;background:radial-gradient(ellipse at 20% 0%,rgba(239,68,68,.25),transparent 55%),radial-gradient(ellipse at 80% 0%,rgba(56,189,248,.22),transparent 55%),radial-gradient(ellipse at 50% 0%,rgba(255,138,31,.22),transparent 60%);border-bottom:4px solid transparent;border-image:var(--grad) 1}
+.hero img{width:min(240px,64vw);height:auto;border-radius:50%;box-shadow:0 0 44px rgba(255,138,31,.4)}
 h1{font-size:1.7rem;font-weight:900;margin:18px 0 4px;line-height:1.3;text-wrap:balance}
 .tag{color:var(--or-2);font-weight:700}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:16px}
 .card h2{font-size:1.15rem;margin-bottom:10px;color:var(--or)}
 .sports{display:grid;gap:12px}
-.sport{background:var(--panel-2);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.sport{--c:var(--or);background:var(--panel-2);border:1px solid var(--line);border-inline-start:6px solid var(--c);border-radius:16px;padding:14px 16px;background-image:linear-gradient(90deg,color-mix(in srgb,var(--c) 16%,transparent),transparent 60%)}
+.sport h3{color:var(--c)}
 .sport h3{font-size:1.1rem;display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .sport h3 span{font-size:1.6rem}
 dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.95rem}
@@ -37,9 +38,9 @@ dd{min-width:0;overflow-wrap:anywhere}
 .f{display:flex;flex-direction:column;gap:5px;margin-top:12px}
 .f label{font-weight:700;font-size:.92rem}
 .f input,.f select{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0;width:100%}
-.f input:focus,.f select:focus{outline:none;border-color:var(--or)}
+.f input:focus,.f select:focus{outline:none;border-color:var(--blue)}
 .err{color:#ff7b72;font-size:.82rem;min-height:1.1em}
-.book{width:100%;margin-top:16px;background:var(--or);color:#111;border:0;border-radius:14px;padding:14px;font-weight:900;font-size:1.1rem}
+.book{width:100%;margin-top:16px;background:var(--grad);color:#111;border:0;border-radius:14px;padding:14px;font-weight:900;font-size:1.1rem}
 .note{color:var(--muted);font-size:.85rem;margin-top:8px}
 .toast{position:fixed;inset-inline:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));margin:auto;max-width:340px;background:var(--text);color:var(--bg);border-radius:12px;padding:10px 14px;text-align:center;font-weight:700;display:none}
 .toast.show{display:block}
@@ -61,22 +62,9 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
   </section>
 
   <section class="card" aria-labelledby="c">
-    <h2 id="c">التواصل والاستقبال</h2>
-    <p id="cPhone" dir="ltr" style="margin-bottom:10px;text-align:start;font-size:1.3rem;font-weight:900;letter-spacing:.04em"></p>
-    <div class="share">
-      <a id="cCall" href="#">اتصل بينا</a>
-      <a id="cWa" href="#" target="_blank" rel="noopener">واتساب</a>
-    </div>
-    <p class="note" id="cAddr"></p>
-  </section>
-
-  <section class="card" aria-labelledby="s">
-    <h2 id="s">شارك الأكاديمية</h2>
-    <div class="share">
-      <a id="fb" href="#" target="_blank" rel="noopener">فيسبوك</a>
-      <a id="wa" href="#" target="_blank" rel="noopener">واتساب</a>
-      <button type="button" id="copy">نسخ الرابط</button>
-    </div>
+    <h2 id="c">المكان</h2>
+    <p id="cAddr"></p>
+    <div class="share" style="margin-top:12px"><button type="button" id="copy">نسخ رابط الموقع</button></div>
   </section>
 
   <section class="card" aria-labelledby="b">
@@ -98,16 +86,16 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
 <script>
 /* ===== عدّل هنا بس: الرقم والعنوان واللعبات والمجموعات والمواعيد ===== */
 var CONFIG = {
-  phone: "01285705106",
+  phone: "", /* رقم الاستقبال (لسه متحطش). لما تحطه، الحجز بيفتح واتساب برسالة جاهزة */
   address: "محافظة الإسماعيلية - فندق توليب الفرسان",
   sports: [
-    { id: "handball",   name: "كرة اليد",   icon: "🤾",
+    { id: "handball",   name: "كرة اليد",   icon: "🤾", color: "#ef4444",
       days: "السبت والاتنين والأربعاء",
       groups: [ {name:"الأولاد", time:"الساعة 6"}, {name:"البنات", time:"الساعة 8"} ] },
-    { id: "basketball", name: "كرة السلة",  icon: "🏀",
+    { id: "basketball", name: "كرة السلة",  icon: "🏀", color: "#ff8a1f",
       days: "المواعيد هتتحدد قريب",
       groups: [ {name:"الأولاد", time:"هتتحدد"}, {name:"البنات", time:"هتتحدد"} ] },
-    { id: "volleyball", name: "الكرة الطائرة", icon: "🏐",
+    { id: "volleyball", name: "الكرة الطائرة", icon: "🏐", color: "#38bdf8",
       days: "المواعيد هتتحدد قريب",
       groups: [ {name:"الأولاد", time:"هتتحدد"}, {name:"البنات", time:"هتتحدد"} ] }
   ]
@@ -116,17 +104,14 @@ var CONFIG = {
 <script>
 (function(){
   var $=function(s){return document.querySelector(s)};
-  var intl="20"+CONFIG.phone.replace(/\D/g,"").replace(/^0/,"");
+  var digits=CONFIG.phone.replace(/\D/g,""),intl=digits?"20"+digits.replace(/^0/,""):"";
   $("#y").textContent=new Date().getFullYear();
-  $("#cPhone").textContent=CONFIG.phone;
-  $("#cCall").href="tel:+"+intl;
-  $("#cWa").href="https://wa.me/"+intl;
   $("#cAddr").textContent=CONFIG.address;
 
   function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
   var box=$("#sports"),sel=$("#sport");
   CONFIG.sports.forEach(function(s){
-    var d=el("div","sport"),h=el("h3");h.appendChild(el("span",null,s.icon));h.appendChild(document.createTextNode(s.name));
+    var d=el("div","sport"),h=el("h3");d.style.setProperty("--c",s.color);h.appendChild(el("span",null,s.icon));h.appendChild(document.createTextNode(s.name));
     var dl=el("dl");
     dl.appendChild(el("dt",null,"المواعيد"));dl.appendChild(el("dd",null,s.days));
     dl.appendChild(el("dt",null,"المجموعات"));dl.appendChild(el("dd",null,s.groups.map(function(g){return g.name+": "+g.time}).join("  ·  ")));
@@ -140,9 +125,7 @@ var CONFIG = {
   }
   sel.addEventListener("change",fillGroups);fillGroups();
 
-  var url=location.href.split("#")[0],t=encodeURIComponent("أكاديمية بروفيشنال الإسماعيلية");
-  $("#fb").href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url);
-  $("#wa").href="https://wa.me/?text="+t+"%20"+encodeURIComponent(url);
+  var url=location.href.split("#")[0];
   function toast(m){var e=$("#toast");e.textContent=m;e.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){e.classList.remove("show")},2200)}
   $("#copy").addEventListener("click",function(){
     if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(function(){toast("تم نسخ الرابط بنجاح!")},function(){toast(url)});else toast(url);
@@ -153,6 +136,7 @@ var CONFIG = {
     $("#whoErr").textContent=who?"":"اكتب اسم اللاعب.";if(!who)ok=false;
     if(!/^01[0125]\d{8}$/.test(ph)){$("#phErr").textContent="اكتب رقم موبايل مصري صحيح، زي 01012345678.";ok=false}else $("#phErr").textContent="";
     if(!ok)return;
+    if(!intl){toast("الحجز هيشتغل قريب، رقم الاستقبال لسه متحطش.");return}
     var sp=CONFIG.sports.filter(function(x){return x.id===sel.value})[0];
     var msg="طلب حجز في أكاديمية بروفيشنال الإسماعيلية\nاللعبة: "+sp.name+"\nاسم اللاعب: "+who+"\nالمجموعة: "+$("#grp").value+"\nرقم التواصل: "+ph;
     location.href="https://wa.me/"+intl+"?text="+encodeURIComponent(msg);
