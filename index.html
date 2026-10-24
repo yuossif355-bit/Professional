@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>بروفيشنال أكاديمي | كرة يد · سلة · طائرة</title>
 <meta name="description" content="أكاديمية بروفيشنال الإسماعيلية: كرة يد، كرة سلة، وكرة طائرة للشباب والبنات. احجز مكانك الآن.">
-<meta name="theme-color" content="#0a0f1a">
+<meta name="theme-color" content="#0d0b16">
 <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
 <link rel="apple-touch-icon" href="img/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0f1a;--panel:#111827;--panel-2:#172033;--line:#263248;--text:#f3f6fb;--muted:#9aa7bd;--or:#ff8a1f;--or-2:#ffc27a;--red:#ef4444;--blue:#38bdf8;--grad:linear-gradient(90deg,#ef4444,#ff8a1f,#38bdf8)}
+:root{--bg:#0d0b16;--panel:#16132a;--panel-2:#1e1a38;--line:#322d55;--text:#f6f4ff;--muted:#a9a4c7;--or:#fbbf24;--or-2:#fde68a;--green:#34d399;--violet:#a78bfa;--grad:linear-gradient(90deg,#34d399,#fbbf24,#a78bfa)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:"Cairo",system-ui,sans-serif;line-height:1.7;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
 button,input,select{font:inherit;color:inherit}
 button,label{cursor:pointer}
 :focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .wrap{max-width:720px;margin:0 auto;padding-inline:16px}
-.hero{text-align:center;padding:26px 16px 22px;background:radial-gradient(ellipse at 20% 0%,rgba(239,68,68,.25),transparent 55%),radial-gradient(ellipse at 80% 0%,rgba(56,189,248,.22),transparent 55%),radial-gradient(ellipse at 50% 0%,rgba(255,138,31,.22),transparent 60%);border-bottom:4px solid transparent;border-image:var(--grad) 1}
-.hero img{width:min(240px,64vw);height:auto;border-radius:50%;box-shadow:0 0 44px rgba(255,138,31,.4)}
+.hero{text-align:center;padding:26px 16px 22px;background:radial-gradient(ellipse at 20% 0%,rgba(52,211,153,.22),transparent 55%),radial-gradient(ellipse at 80% 0%,rgba(167,139,250,.25),transparent 55%),radial-gradient(ellipse at 50% 0%,rgba(251,191,36,.2),transparent 60%);border-bottom:4px solid transparent;border-image:var(--grad) 1}
+.hero img{width:min(240px,64vw);height:auto;border-radius:50%;box-shadow:0 0 44px rgba(251,191,36,.4)}
 h1{font-size:1.7rem;font-weight:900;margin:18px 0 4px;line-height:1.3;text-wrap:balance}
 .tag{color:var(--or-2);font-weight:700}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:16px}
@@ -38,7 +38,7 @@ dd{min-width:0;overflow-wrap:anywhere}
 .f{display:flex;flex-direction:column;gap:5px;margin-top:12px}
 .f label{font-weight:700;font-size:.92rem}
 .f input,.f select{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0;width:100%}
-.f input:focus,.f select:focus{outline:none;border-color:var(--blue)}
+.f input:focus,.f select:focus{outline:none;border-color:var(--violet)}
 .err{color:#ff7b72;font-size:.82rem;min-height:1.1em}
 .book{width:100%;margin-top:16px;background:var(--grad);color:#111;border:0;border-radius:14px;padding:14px;font-weight:900;font-size:1.1rem}
 .note{color:var(--muted);font-size:.85rem;margin-top:8px}
@@ -62,9 +62,14 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
   </section>
 
   <section class="card" aria-labelledby="c">
-    <h2 id="c">المكان</h2>
-    <p id="cAddr"></p>
-    <div class="share" style="margin-top:12px"><button type="button" id="copy">نسخ رابط الموقع</button></div>
+    <h2 id="c">التواصل والاستقبال</h2>
+    <p id="cPhone" dir="ltr" style="margin-bottom:10px;text-align:start;font-size:1.3rem;font-weight:900;letter-spacing:.04em"></p>
+    <div class="share">
+      <a id="cCall" href="#">اتصل بينا</a>
+      <a id="cWa" href="#" target="_blank" rel="noopener">واتساب</a>
+      <button type="button" id="copy">نسخ رابط الموقع</button>
+    </div>
+    <p class="note" id="cAddr"></p>
   </section>
 
   <section class="card" aria-labelledby="b">
@@ -86,16 +91,16 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
 <script>
 /* ===== عدّل هنا بس: الرقم والعنوان واللعبات والمجموعات والمواعيد ===== */
 var CONFIG = {
-  phone: "", /* رقم الاستقبال (لسه متحطش). لما تحطه، الحجز بيفتح واتساب برسالة جاهزة */
+  phone: "01205654610",
   address: "محافظة الإسماعيلية - فندق توليب الفرسان",
   sports: [
-    { id: "handball",   name: "كرة اليد",   icon: "🤾", color: "#ef4444",
+    { id: "handball",   name: "كرة اليد",   icon: "🤾", color: "#34d399",
       days: "السبت والاتنين والأربعاء",
       groups: [ {name:"الأولاد", time:"الساعة 6"}, {name:"البنات", time:"الساعة 8"} ] },
-    { id: "basketball", name: "كرة السلة",  icon: "🏀", color: "#ff8a1f",
+    { id: "basketball", name: "كرة السلة",  icon: "🏀", color: "#fbbf24",
       days: "المواعيد هتتحدد قريب",
       groups: [ {name:"الأولاد", time:"هتتحدد"}, {name:"البنات", time:"هتتحدد"} ] },
-    { id: "volleyball", name: "الكرة الطائرة", icon: "🏐", color: "#38bdf8",
+    { id: "volleyball", name: "الكرة الطائرة", icon: "🏐", color: "#a78bfa",
       days: "المواعيد هتتحدد قريب",
       groups: [ {name:"الأولاد", time:"هتتحدد"}, {name:"البنات", time:"هتتحدد"} ] }
   ]
@@ -107,6 +112,9 @@ var CONFIG = {
   var digits=CONFIG.phone.replace(/\D/g,""),intl=digits?"20"+digits.replace(/^0/,""):"";
   $("#y").textContent=new Date().getFullYear();
   $("#cAddr").textContent=CONFIG.address;
+  $("#cPhone").textContent=CONFIG.phone;
+  $("#cCall").href="tel:+"+intl;
+  $("#cWa").href="https://wa.me/"+intl;
 
   function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
   var box=$("#sports"),sel=$("#sport");

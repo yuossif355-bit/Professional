@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0a0f1a">
+<meta name="theme-color" content="#0d0b16">
 <title>سجل الاشتراكات | Professional Academy</title>
 <link rel="icon" type="image/png" href="../img/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0f1a;--panel:#111827;--panel-2:#172033;--line:#263248;--text:#f3f6fb;--muted:#9aa7bd;--or:#ff8a1f;--or-2:#ffc27a;--ok:#4be28a;--bad:#ff7b72;--grad:linear-gradient(90deg,#ef4444,#ff8a1f,#38bdf8)}
+:root{--bg:#0d0b16;--panel:#16132a;--panel-2:#1e1a38;--line:#322d55;--text:#f6f4ff;--muted:#a9a4c7;--or:#fbbf24;--or-2:#fde68a;--ok:#4be28a;--bad:#ff7b72;--grad:linear-gradient(90deg,#34d399,#fbbf24,#a78bfa)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:"Cairo",system-ui,sans-serif;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 button,input,select{font:inherit;color:inherit}
@@ -111,8 +111,8 @@ input:focus,select:focus{outline:none;border-color:var(--or)}
 
 <script>
 (function(){
-  var SPORTS=[{id:"handball",name:"كرة اليد",color:"#ef4444"},{id:"basketball",name:"كرة السلة",color:"#ff8a1f"},{id:"volleyball",name:"الكرة الطائرة",color:"#38bdf8"}];
-  function sportColor(id){var s=SPORTS.filter(function(x){return x.id===id})[0];return s?s.color:"#263248"}
+  var SPORTS=[{id:"handball",name:"كرة اليد",color:"#34d399"},{id:"basketball",name:"كرة السلة",color:"#fbbf24"},{id:"volleyball",name:"الكرة الطائرة",color:"#a78bfa"}];
+  function sportColor(id){var s=SPORTS.filter(function(x){return x.id===id})[0];return s?s.color:"#322d55"}
   var KEY="pa_subs_v1";
   var $=function(s){return document.querySelector(s)};
   var db={members:[]}; /* member: {id,name,phone,sport,group,paid:{"2026-10":"2026-10-24"}} */
