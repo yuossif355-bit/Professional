@@ -11,45 +11,77 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d0b16;--panel:#16132a;--panel-2:#1e1a38;--line:#322d55;--text:#f6f4ff;--muted:#a9a4c7;--or:#fbbf24;--or-2:#fde68a;--ok:#4be28a;--bad:#ff7b72;--grad:linear-gradient(90deg,#34d399,#fbbf24,#a78bfa)}
+:root{--bg:#0d0b16;--panel:#16132a;--panel-2:#1e1a38;--line:#3d3766;--text:#ffffff;--muted:#c3bfdc;--or:#fbbf24;--ok:#34d399;--ok-bg:rgba(52,211,153,.14);--bad:#ff8a80;--bad-bg:rgba(255,138,128,.14);--grad:linear-gradient(90deg,#34d399,#fbbf24,#a78bfa)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:"Cairo",system-ui,sans-serif;line-height:1.6;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+html{font-size:17px}
+body{background:var(--bg);color:var(--text);font-family:"Cairo",system-ui,sans-serif;line-height:1.6;border-top:4px solid transparent;border-image:var(--grad) 1;padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .wrap{max-width:720px;margin:0 auto;padding-inline:16px}
-.head{display:flex;align-items:center;gap:12px;padding:18px 0 6px}
+.head{display:flex;align-items:center;gap:12px;padding:16px 0 4px}
 .head img{width:52px;height:52px;border-radius:50%;box-shadow:0 0 0 2px var(--or)}
-body{border-top:4px solid transparent;border-image:var(--grad) 1}
-.m{border-inline-start:6px solid var(--c,var(--line))}
-.head h1{font-size:1.3rem;font-weight:900;line-height:1.25}
-.head p{color:var(--or-2);font-size:.85rem;font-weight:700}
+.head h1{font-size:1.4rem;font-weight:900;line-height:1.25}
+.how{background:var(--panel);border:1px dashed var(--line);border-radius:14px;padding:10px 14px;margin-top:12px;color:var(--muted);font-size:.95rem}
+.how b{color:var(--text)}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:14px}
-.card h2{font-size:1.05rem;color:var(--or);margin-bottom:8px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
-.stat b{display:block;font-size:1.7rem;font-weight:900;font-variant-numeric:tabular-nums}
-.stat span{color:var(--muted);font-size:.82rem;font-weight:700}
-.stat.ok b{color:var(--ok)}.stat.bad b{color:var(--bad)}
+.card h2{font-size:1.1rem;color:var(--or);margin-bottom:8px}
+
+/* الشهر */
+.months{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:8px}
+.months button{width:52px;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--panel-2);font-size:1.6rem;font-weight:900}
+.months .cur{flex:1;text-align:center;font-size:1.5rem;font-weight:900}
+.months .cur small{display:block;color:var(--muted);font-size:.8rem;font-weight:700;line-height:1.2}
+
+/* الملخص */
+.sum{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px}
+.sum .big{font-size:1.25rem;font-weight:900;text-align:center}
+.sum .big b{color:var(--ok);font-size:1.9rem}
+.prog{height:14px;border-radius:99px;background:var(--panel-2);overflow:hidden;margin:10px 0 12px}
+.prog i{display:block;height:100%;width:0;background:var(--ok);border-radius:99px;transition:width .4s}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tab{border:2px solid var(--line);background:var(--panel-2);border-radius:14px;padding:8px 4px;text-align:center}
+.tab b{display:block;font-size:1.6rem;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums}
+.tab span{font-size:.9rem;font-weight:700}
+.tab.ok b,.tab.ok span{color:var(--ok)}.tab.bad b,.tab.bad span{color:var(--bad)}
+.tab[aria-pressed="true"]{border-color:var(--or);box-shadow:0 0 0 2px var(--or) inset}
+
+/* فلاتر */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{--c:var(--line);border:2px solid var(--c);background:transparent;border-radius:99px;padding:6px 14px;font-weight:700;font-size:.95rem}
+.chip[aria-pressed="true"]{background:var(--c);color:#111}
+input,select{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:11px 12px;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--or)}
+.search{margin-top:12px}
 .row{display:flex;gap:8px;flex-wrap:wrap}
 .row>*{flex:1 1 130px;min-width:0}
-input,select{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
-input:focus,select:focus{outline:none;border-color:var(--or)}
-.btn{background:var(--grad);color:#111;border:0;border-radius:12px;padding:10px 16px;font-weight:900}
+.btn{background:var(--grad);color:#111;border:0;border-radius:12px;padding:11px 16px;font-weight:900}
 .btn.ghost{background:var(--panel-2);color:var(--text);border:1px solid var(--line);font-weight:700}
 .btn.sm{padding:6px 12px;font-size:.88rem}
-.list{display:grid;gap:8px;margin-top:10px}
-.m{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
-.m.paid{border-color:rgba(75,226,138,.5)}
-.m .n{font-weight:900}
-.m .s{color:var(--muted);font-size:.82rem;grid-column:1}
-.m .when{color:var(--ok);font-size:.8rem;font-weight:700;grid-column:1}
-.pay{grid-row:1/span 2;grid-column:2;border:2px solid var(--line);background:var(--bg);border-radius:12px;padding:8px 14px;font-weight:900;min-width:92px}
-.paid .pay{background:var(--ok);border-color:var(--ok);color:#06210f}
-.tools{display:flex;gap:6px;grid-column:1/-1;margin-top:4px}
-.empty{color:var(--muted);text-align:center;padding:18px 0}
-.note{color:var(--muted);font-size:.82rem;margin-top:10px;line-height:1.8}
-.toast{position:fixed;inset-inline:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));margin:auto;max-width:340px;background:var(--text);color:var(--bg);border-radius:12px;padding:10px 14px;text-align:center;font-weight:700;display:none}
+
+/* القوائم */
+.sec{margin-top:18px}
+.sec h2{display:flex;align-items:center;gap:8px;font-size:1.15rem;font-weight:900;padding-bottom:6px;border-bottom:3px solid}
+.sec.bad h2{color:var(--bad);border-color:var(--bad)}
+.sec.ok h2{color:var(--ok);border-color:var(--ok)}
+.sec h2 em{font-style:normal;margin-inline-start:auto;font-variant-numeric:tabular-nums}
+.list{display:grid;gap:10px;margin-top:10px}
+.m{--c:var(--line);background:var(--panel);border:1px solid var(--line);border-inline-start:8px solid var(--c);border-radius:16px;padding:12px 14px;display:grid;gap:8px}
+.m .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.m .n{font-size:1.2rem;font-weight:900;flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+.tag{--c:var(--line);background:var(--c);color:#111;border-radius:99px;padding:1px 12px;font-size:.85rem;font-weight:900;white-space:nowrap}
+.m .s{color:var(--muted);font-size:.92rem}
+.act{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pay{flex:1 1 200px;border:0;border-radius:14px;padding:12px;font-weight:900;font-size:1.1rem;background:var(--ok);color:#052e1d}
+.done{flex:1 1 200px;border-radius:14px;padding:10px 12px;background:var(--ok-bg);border:2px solid var(--ok);color:var(--ok);font-weight:900;text-align:center}
+.status{font-weight:900;font-size:.9rem;border-radius:8px;padding:0 10px}
+.status.bad{background:var(--bad-bg);color:var(--bad)}
+.status.ok{background:var(--ok-bg);color:var(--ok)}
+.empty{color:var(--muted);text-align:center;padding:22px 10px;background:var(--panel);border:1px dashed var(--line);border-radius:16px;margin-top:14px}
+.note{color:var(--muted);font-size:.9rem;margin-top:10px;line-height:1.8}
+details.card summary{font-size:1.1rem;font-weight:900;color:var(--or);cursor:pointer}
+details.card[open] summary{margin-bottom:10px}
+.toast{position:fixed;inset-inline:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));margin:auto;max-width:360px;background:var(--text);color:#111;border-radius:12px;padding:10px 14px;text-align:center;font-weight:900;display:none}
 .toast.show{display:block}
 </style>
 </head>
@@ -57,36 +89,36 @@ input:focus,select:focus{outline:none;border-color:var(--or)}
 <div class="wrap">
   <header class="head">
     <img src="../img/logo.jpg" alt="" width="52" height="52">
-    <div><h1>سجل الاشتراكات</h1><p>مين دفع ومين لسه</p></div>
+    <h1>سجل الاشتراكات</h1>
   </header>
+  <p class="how"><b>إزاي تستخدمه؟</b> اختار الشهر، وأي لاعب دفع دوس على زرار <b>"تسجيل الدفع"</b> جنب اسمه. اللي لسه مدفعش هيفضل فوق في قايمة <b>"لسه"</b>.</p>
 
-  <section class="card" aria-label="الشهر">
-    <div class="row">
-      <input type="month" id="month" aria-label="الشهر">
-      <select id="fSport" aria-label="اللعبة"><option value="">كل الألعاب</option></select>
-      <select id="fStatus" aria-label="الحالة">
-        <option value="">الكل</option><option value="paid">دفعوا</option><option value="unpaid">لسه</option>
-      </select>
-    </div>
-    <div class="row" style="margin-top:8px"><input type="search" id="q" placeholder="ابحث بالاسم أو الرقم" aria-label="بحث"></div>
-  </section>
-
-  <div class="stats" aria-live="polite">
-    <div class="stat"><b id="tAll">0</b><span>إجمالي اللاعبين</span></div>
-    <div class="stat ok"><b id="tPaid">0</b><span>دفعوا</span></div>
-    <div class="stat bad"><b id="tUnpaid">0</b><span>لسه</span></div>
+  <div class="months" role="group" aria-label="اختيار الشهر">
+    <button type="button" id="mNext" aria-label="الشهر اللي بعده">›</button>
+    <div class="cur"><small>الشهر</small><span id="mName"></span></div>
+    <button type="button" id="mPrev" aria-label="الشهر اللي قبله">‹</button>
   </div>
 
-  <section class="card" aria-label="اللاعبين">
-    <div class="list" id="list"></div>
+  <section class="sum" aria-live="polite" aria-label="ملخص الشهر">
+    <p class="big"><b id="tPaid">0</b> من <span id="tAll">0</span> لاعب دفعوا</p>
+    <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+    <div class="tabs" role="group" aria-label="عرض حسب الحالة">
+      <button type="button" class="tab" data-st="" aria-pressed="true"><b id="cAll">0</b><span>الكل</span></button>
+      <button type="button" class="tab ok" data-st="paid" aria-pressed="false"><b id="cPaid">0</b><span>✓ دفعوا</span></button>
+      <button type="button" class="tab bad" data-st="unpaid" aria-pressed="false"><b id="cUnpaid">0</b><span>✗ لسه</span></button>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="اختيار اللعبة"></div>
+    <input class="search" type="search" id="q" placeholder="🔍 ابحث بالاسم أو الرقم" aria-label="بحث">
   </section>
 
-  <section class="card" aria-labelledby="addH">
-    <h2 id="addH">إضافة لاعب</h2>
+  <div id="out"></div>
+
+  <details class="card" id="addBox">
+    <summary>➕ إضافة لاعب جديد</summary>
     <form id="add" novalidate>
       <div class="row">
         <input id="aName" placeholder="اسم اللاعب" maxlength="40" aria-label="اسم اللاعب">
-        <input id="aPhone" type="tel" inputmode="tel" dir="ltr" placeholder="رقم الموبايل" aria-label="رقم الموبايل" style="text-align:start">
+        <input id="aPhone" type="tel" inputmode="tel" dir="ltr" placeholder="رقم الموبايل (اختياري)" aria-label="رقم الموبايل" style="text-align:start">
       </div>
       <div class="row" style="margin-top:8px">
         <select id="aSport" aria-label="اللعبة"></select>
@@ -94,10 +126,10 @@ input:focus,select:focus{outline:none;border-color:var(--or)}
         <button class="btn" type="submit">إضافة</button>
       </div>
     </form>
-  </section>
+  </details>
 
-  <section class="card" aria-labelledby="bkH">
-    <h2 id="bkH">نسخة احتياطية</h2>
+  <details class="card">
+    <summary>💾 نسخة احتياطية وتصدير</summary>
     <div class="row">
       <button class="btn ghost" id="csv" type="button">تصدير Excel (CSV)</button>
       <button class="btn ghost" id="bk" type="button">حفظ نسخة</button>
@@ -105,74 +137,100 @@ input:focus,select:focus{outline:none;border-color:var(--or)}
     </div>
     <input type="file" id="file" accept="application/json" hidden>
     <p class="note">البيانات محفوظة على جهازك إنت بس ومبتتبعتش لأي سيرفر، يعني محدش غيرك يشوفها. لو مسحت بيانات المتصفح أو غيرت الموبايل هتضيع، فاعمل "حفظ نسخة" كل فترة.</p>
-  </section>
+  </details>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
 (function(){
   var SPORTS=[{id:"handball",name:"كرة اليد",color:"#34d399"},{id:"basketball",name:"كرة السلة",color:"#fbbf24"},{id:"volleyball",name:"الكرة الطائرة",color:"#a78bfa"}];
-  function sportColor(id){var s=SPORTS.filter(function(x){return x.id===id})[0];return s?s.color:"#322d55"}
+  var MONTHS=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
   var KEY="pa_subs_v1";
   var $=function(s){return document.querySelector(s)};
   var db={members:[]}; /* member: {id,name,phone,sport,group,paid:{"2026-10":"2026-10-24"}} */
+  var st={m:null,sport:"",status:""};
   function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||"null");if(d&&Array.isArray(d.members))db=d}catch(e){}}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){toast("مقدرتش أحفظ. المتصفح مانع التخزين.")}}
-  function toast(m){var e=$("#toast");e.textContent=m;e.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){e.classList.remove("show")},2400)}
-  function sportName(id){var s=SPORTS.filter(function(x){return x.id===id})[0];return s?s.name:id}
+  function toast(m){var e=$("#toast");e.textContent=m;e.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){e.classList.remove("show")},2600)}
+  function sp(id){return SPORTS.filter(function(x){return x.id===id})[0]||{name:id,color:"#3d3766"}}
   function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
-  function today(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-  function fmt(iso){try{return new Date(iso+"T00:00:00").toLocaleDateString("ar-EG",{day:"numeric",month:"long"})}catch(e){return iso}}
+  function pad(n){return String(n).padStart(2,"0")}
+  function today(){var d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+  function fmt(iso){var p=iso.split("-");return +p[2]+" "+MONTHS[+p[1]-1]}
+  function monthLabel(m){var p=m.split("-");return MONTHS[+p[1]-1]+" "+p[0]}
+  function shift(m,k){var p=m.split("-"),d=new Date(+p[0],+p[1]-1+k,1);return d.getFullYear()+"-"+pad(d.getMonth()+1)}
+  st.m=today().slice(0,7);
 
-  var month=$("#month");month.value=today().slice(0,7);
-  SPORTS.forEach(function(s){
-    var o=el("option",null,s.name);o.value=s.id;$("#aSport").appendChild(o);
-    var o2=el("option",null,s.name);o2.value=s.id;$("#fSport").appendChild(o2);
-  });
+  SPORTS.forEach(function(s){var o=el("option",null,s.name);o.value=s.id;$("#aSport").appendChild(o)});
 
-  function visible(){
-    var m=month.value,sp=$("#fSport").value,st=$("#fStatus").value,q=$("#q").value.trim().toLowerCase();
-    return db.members.filter(function(x){
-      if(sp&&x.sport!==sp)return false;
-      var p=!!(x.paid&&x.paid[m]);
-      if(st==="paid"&&!p)return false;
-      if(st==="unpaid"&&p)return false;
-      if(q&&(x.name+" "+x.phone).toLowerCase().indexOf(q)<0)return false;
-      return true;
+  function chips(){
+    var box=$("#chips");while(box.firstChild)box.removeChild(box.firstChild);
+    [{id:"",name:"كل الألعاب",color:"#c3bfdc"}].concat(SPORTS).forEach(function(s){
+      var b=el("button","chip",s.name);b.type="button";b.style.setProperty("--c",s.color);
+      b.setAttribute("aria-pressed",st.sport===s.id?"true":"false");
+      b.addEventListener("click",function(){st.sport=s.id;render()});box.appendChild(b);
     });
   }
+  function isPaid(x){return !!(x.paid&&x.paid[st.m])}
+  function matches(x,q){return !q||(x.name+" "+x.phone).toLowerCase().indexOf(q)>=0}
+
+  function row(x){
+    var p=isPaid(x),c=el("div","m");c.style.setProperty("--c",sp(x.sport).color);
+    var top=el("div","top");
+    top.appendChild(el("span","n",x.name));
+    var t=el("span","tag",sp(x.sport).name);t.style.setProperty("--c",sp(x.sport).color);top.appendChild(t);
+    c.appendChild(top);
+    c.appendChild(el("div","s",x.group+(x.phone?"  ·  "+x.phone:"")));
+    var a=el("div","act");
+    if(p){
+      a.appendChild(el("div","done","✓ دفع يوم "+fmt(x.paid[st.m])));
+      var u=el("button","btn ghost sm","تراجع");u.type="button";
+      u.addEventListener("click",function(){
+        if(confirm("تلغي تسجيل دفع "+x.name+" عن شهر "+monthLabel(st.m)+"؟")){delete x.paid[st.m];save();render()}
+      });a.appendChild(u);
+    }else{
+      var b=el("button","pay","✓ تسجيل الدفع");b.type="button";
+      b.setAttribute("aria-label","تسجيل دفع "+x.name);
+      b.addEventListener("click",function(){x.paid=x.paid||{};x.paid[st.m]=today();save();render();toast("اتسجل دفع "+x.name+" ✓")});
+      a.appendChild(b);
+    }
+    var rm=el("button","btn ghost sm","حذف");rm.type="button";
+    rm.addEventListener("click",function(){
+      if(confirm("تحذف "+x.name+" نهائيًا مع كل سجل دفعه؟")){db.members=db.members.filter(function(y){return y.id!==x.id});save();render()}
+    });a.appendChild(rm);
+    c.appendChild(a);return c;
+  }
+  function section(cls,title,rows){
+    var s=el("section","sec "+cls),h=el("h2",null,title);h.appendChild(el("em",null,String(rows.length)));s.appendChild(h);
+    var l=el("div","list");rows.forEach(function(x){l.appendChild(row(x))});s.appendChild(l);return s;
+  }
+
   function render(){
-    var m=month.value,list=$("#list");
-    while(list.firstChild)list.removeChild(list.firstChild);
-    var sp=$("#fSport").value;
-    var base=db.members.filter(function(x){return !sp||x.sport===sp});
-    var paid=base.filter(function(x){return x.paid&&x.paid[m]}).length;
-    $("#tAll").textContent=base.length;$("#tPaid").textContent=paid;$("#tUnpaid").textContent=base.length-paid;
-    var rows=visible();
-    if(!rows.length){list.appendChild(el("p","empty",db.members.length?"مفيش نتايج.":"ضيف أول لاعب من تحت."));return}
-    rows.sort(function(a,b){return a.name.localeCompare(b.name,"ar")});
-    rows.forEach(function(x){
-      var p=x.paid&&x.paid[m],card=el("div","m"+(p?" paid":""));
-      card.style.setProperty("--c",sportColor(x.sport));card.appendChild(el("div","n",x.name));
-      card.appendChild(el("div","s",sportName(x.sport)+" · "+x.group+(x.phone?" · "+x.phone:"")));
-      if(p)card.appendChild(el("div","when","اتدفع يوم "+fmt(p)));
-      var b=el("button","pay",p?"✓ دفع":"لسه");b.type="button";
-      b.setAttribute("aria-pressed",p?"true":"false");b.setAttribute("aria-label",x.name+": "+(p?"دفع":"لسه"));
-      b.addEventListener("click",function(){
-        x.paid=x.paid||{};
-        if(x.paid[m])delete x.paid[m];else x.paid[m]=today();
-        save();render();
-      });
-      card.appendChild(b);
-      var t=el("div","tools");
-      var rm=el("button","btn ghost sm","حذف");rm.type="button";
-      rm.addEventListener("click",function(){
-        if(confirm("تحذف "+x.name+" وكل سجل دفعه؟")){db.members=db.members.filter(function(y){return y.id!==x.id});save();render()}
-      });
-      t.appendChild(rm);card.appendChild(t);
-      list.appendChild(card);
-    });
+    $("#mName").textContent=monthLabel(st.m);
+    var q=$("#q").value.trim().toLowerCase();
+    var base=db.members.filter(function(x){return !st.sport||x.sport===st.sport});
+    var paid=base.filter(isPaid).length,all=base.length,un=all-paid;
+    $("#tPaid").textContent=paid;$("#tAll").textContent=all;
+    $("#cAll").textContent=all;$("#cPaid").textContent=paid;$("#cUnpaid").textContent=un;
+    $("#bar").style.width=(all?Math.round(paid/all*100):0)+"%";
+    document.querySelectorAll(".tab").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.st===st.status?"true":"false")});
+    chips();
+    var out=$("#out");while(out.firstChild)out.removeChild(out.firstChild);
+    if(!db.members.length){
+      out.appendChild(el("p","empty","لسه مفيش لاعيبة. دوس على ➕ إضافة لاعب جديد من تحت وابدأ."));
+      $("#addBox").open=true;return;
+    }
+    var list=base.filter(function(x){return matches(x,q)}).sort(function(a,b){return a.name.localeCompare(b.name,"ar")});
+    var u=list.filter(function(x){return !isPaid(x)}),p=list.filter(isPaid);
+    if(st.status!=="paid"&&u.length)out.appendChild(section("bad","✗ لسه ما دفعوش",u));
+    if(st.status!=="unpaid"&&p.length)out.appendChild(section("ok","✓ دفعوا",p));
+    if(!out.firstChild)out.appendChild(el("p","empty",st.status==="unpaid"?"كل اللاعيبة دفعوا الشهر ده 👏":"مفيش نتايج."));
   }
+
+  document.querySelectorAll(".tab").forEach(function(b){b.addEventListener("click",function(){st.status=b.dataset.st;render()})});
+  $("#mPrev").addEventListener("click",function(){st.m=shift(st.m,-1);render()});
+  $("#mNext").addEventListener("click",function(){st.m=shift(st.m,1);render()});
+  $("#q").addEventListener("input",render);
 
   $("#add").addEventListener("submit",function(e){
     e.preventDefault();
@@ -182,8 +240,6 @@ input:focus,select:focus{outline:none;border-color:var(--or)}
     db.members.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:name,phone:ph,sport:$("#aSport").value,group:$("#aGroup").value,paid:{}});
     save();$("#aName").value="";$("#aPhone").value="";render();toast("تمت إضافة "+name);
   });
-  [month,$("#fSport"),$("#fStatus")].forEach(function(c){c.addEventListener("change",render)});
-  $("#q").addEventListener("input",render);
 
   function download(name,type,text){
     var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:type}));a.download=name;
@@ -191,9 +247,9 @@ input:focus,select:focus{outline:none;border-color:var(--or)}
   }
   function csvCell(v){v=String(v==null?"":v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
   $("#csv").addEventListener("click",function(){
-    var m=month.value,rows=[["الاسم","الموبايل","اللعبة","المجموعة","الشهر","الحالة","تاريخ الدفع"]];
-    visible().forEach(function(x){var p=x.paid&&x.paid[m];rows.push([x.name,x.phone,sportName(x.sport),x.group,m,p?"دفع":"لسه",p||""])});
-    download("subscriptions-"+m+".csv","text/csv;charset=utf-8","﻿"+rows.map(function(r){return r.map(csvCell).join(",")}).join("\r\n"));
+    var rows=[["الاسم","الموبايل","اللعبة","المجموعة","الشهر","الحالة","تاريخ الدفع"]];
+    db.members.forEach(function(x){var p=x.paid&&x.paid[st.m];rows.push([x.name,x.phone,sp(x.sport).name,x.group,monthLabel(st.m),p?"دفع":"لسه",p||""])});
+    download("subscriptions-"+st.m+".csv","text/csv;charset=utf-8","﻿"+rows.map(function(r){return r.map(csvCell).join(",")}).join("\r\n"));
   });
   $("#bk").addEventListener("click",function(){download("professional-backup-"+today()+".json","application/json",JSON.stringify(db))});
   $("#rs").addEventListener("click",function(){$("#file").click()});
